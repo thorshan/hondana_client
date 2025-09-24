@@ -47,42 +47,73 @@ function Home() {
       {/* Books Grid */}
       <Grid container spacing={4}>
         {books.map((book) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={book._id}>
+          <Grid sx={{ alignItem: "center" }} item xs={12} sm={6} md={5} lg={4} key={book._id}>
             <Card
-              sx={{ width: 300, height: "100%", display: "flex", flexDirection: "column" }}
+              sx={{
+                width: 200,
+                height: 350,
+                border: "none",
+                boxShadow: 3,
+                display: "flex",
+                flexDirection: "column",
+                overflow: "hidden",
+              }}
             >
-              {book.cover && (
+              {/* Book Cover */}
+              <Box
+                sx={{
+                  overflow: "hidden",
+                  "&:hover img": {
+                    transform: "scale(1.05)",
+                  },
+                }}
+              >
                 <CardMedia
                   component="img"
-                  height="200"
-                  cover={book.cover}
+                  height="250"
+                  image={book.cover || "/images/defaut.png"}
                   alt={book.name}
+                  sx={{
+                    transition: "transform 0.3s ease-in-out",
+                    width: "100%",
+                    objectFit: "cover",
+                  }}
                 />
-              )}
-              <CardContent sx={{ flex: 1, color: "#f36500ff" }}>
-                <Typography variant="h5" gutterBottom>
-                  {book.name || "Untitled Book"}
-                </Typography>
-                <Typography variant="h6" color="text.secondary" gutterBottom>
-                  Author: {book.author?.name || "Unknown"}
-                </Typography>
-                <Typography variant="body1" color="text.secondary" gutterBottom>
-                  Category: {book.category?.name || "Uncategorized"}
-                </Typography>
-                <Typography variant="body2" color="text.secondary" gutterBottom>
-                  {book.description || "No description available."}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Created:{" "}
-                  {new Date(book.createdAt).toLocaleDateString() || "N/A"}
-                </Typography>
-              </CardContent>
+              </Box>
 
-              <CardActions>
-                <Button size="small" component={Link} to={`/book/${book._id}`}>
-                  View
+              {/* Book Info */}
+              <CardContent
+                sx={{
+                  flexGrow: 1,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  p: 1,
+                }}
+              >
+                <Box>
+                  <Typography variant="h6" color="primary">
+                    {book.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" noWrap>
+                    Author : {book.author?.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Category : {book.category?.name}
+                  </Typography>
+                </Box>
+
+                {/* Button */}
+                <Button
+                  variant="contained"
+                  size="small"
+                  sx={{ mt: 1, alignSelf: "center" }}
+                  component={Link} to={`/book/${book._id}`}
+                >
+                  View Book
                 </Button>
-              </CardActions>
+              </CardContent>
             </Card>
           </Grid>
         ))}

@@ -31,7 +31,6 @@ function Profile() {
       setUser(userData);
 
       const allBooks = await callApi(getBooks);
-      // filter books by user if necessary (assuming book.owner or userId)
       const userBooks = allBooks.filter((book) => book.owner === id);
       setBooks(userBooks);
     };
@@ -54,7 +53,7 @@ function Profile() {
       {/* User Info */}
       <Box sx={{ display: "flex", alignItems: "center", mb: 5 }}>
         <Avatar
-          src={user.picture || ""}
+          src={user.image || ""}
           sx={{ width: 100, height: 100, mr: 3 }}
         />
         <Box>
@@ -74,11 +73,11 @@ function Profile() {
             <Card
               sx={{ height: "100%", display: "flex", flexDirection: "column" }}
             >
-              {book.image && (
+              {book.cover && (
                 <CardMedia
                   component="img"
                   height="200"
-                  image={book.image}
+                  image={book.cover}
                   alt={book.name}
                 />
               )}

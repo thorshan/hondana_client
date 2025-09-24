@@ -75,14 +75,14 @@ function BookDetail() {
       >
         {book.cover && (
           <CardMedia
-            component="img"
+            component="cover"
             sx={{ width: { md: 300 }, height: { xs: 300, md: "auto" } }}
-            cover={book.cover}
+            image={book.cover || "/images/defaut.png"}
             alt={book.name}
           />
         )}
         <CardContent sx={{ flex: 1 }}>
-          <Typography variant="h4" color="#f36500ff" gutterBottom>
+          <Typography variant="h4" color="text.primary" gutterBottom>
             {book.name || "Untitled Book"}
           </Typography>
           <Typography variant="h6" color="text.secondary" gutterBottom>
