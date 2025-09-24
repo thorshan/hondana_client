@@ -1,6 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { Container, Typography, Grid, Card, CardContent, CardActions, Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Container, Typography, Grid, Card, CardContent } from "@mui/material";
 import { getUsers } from "../../api/user";
 import { getBooks } from "../../api/book";
 import { getAuthors } from "../../api/author";

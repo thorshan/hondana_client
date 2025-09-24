@@ -1,7 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
-  Box,
   Typography,
   Container,
   Card,
